@@ -6,7 +6,6 @@ import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
 import Berhasil from '../views/Berhasil.vue'
 import Dashboard from '../views/admin/Dashboard.vue'
-import Roles from '../views/admin/Roles.vue'
 // lazy-loaded
 const Profile = () => import("../components/Profile.vue")
 const BoardAdmin = () => import("../views/admin/BoardAdmin.vue")
@@ -48,15 +47,27 @@ const routes = [
   },
 
   {
+    path: '/about',
+    name: 'About',
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+
+  {
     path: '/adddatamobil',
     name: 'AddDataMobil',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/AddDataMobil.vue')
   },
 
   {
-    path: '/editdatamobil',
+    path: '/editdatamobil/:id',
     name: 'EditDataMobil',
     component: () => import(/* webpackChunkName: "about" */ '../views/admin/EditDataMobil.vue')
+  },
+
+  {
+    path: '/deletemobil/:id',
+    name: 'deletemobil',
+    component: () => import(/* webpackChunkName: "about" */ '../views/admin/DeleteMobil.vue')
   },
 
   {
@@ -103,12 +114,6 @@ const routes = [
     // component: () => import(/* webpackChunkName: "about" */ '../views/Berhasil.vue')
   },
 
-  {
-    path: '/roles',
-    name: 'Roles',
-    component: Roles
-    // component: () => import(/* webpackChunkName: "about" */ '../views/Berhasil.vue')
-  },
   {
     path: "/profile",
     name: "profile",

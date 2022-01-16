@@ -23,41 +23,40 @@
         >
           <h1 class="h2">Edit Data Mobil</h1>
         </div>
-        <form class="mt-5">
+        <form @submit.prevent="updateMobil" class="mt-5">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Id Mobil</label>
+            <label for="idmobil" class="form-label">Id Mobil</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputEmail1"
+              id="idmobil"
+              name="idmobil"
+              v-model="mobil.idmobil"
               aria-describedby="emailHelp"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Merek</label>
+            <label for="merek" class="form-label">Merek</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputPassword1"
+              id="merek"
+              name="merek"
+              v-model="mobil.merek"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Harga</label>
+            <label for="harga" class="form-label">Harga</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputPassword1"
+              id="harga"
+              name="harga"
+              v-model="mobil.harga"
             />
           </div>
-          <!-- <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div> -->
-          <a href="#">
-            <button type="button" class="btn btn-primary me-2">
-              Save Changes
-            </button></a
-          >
+
+          <button type="submit" class="btn btn-primary me-2">Save</button>
           <a href="/datamobil">
             <button type="button" class="btn btn-danger">Cancel</button></a
           >
@@ -69,135 +68,6 @@
           height="263"
           style="display: block; width: 625px; height: 263px"
         ></canvas>
-
-        <!-- <h2>Section title</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,004</td>
-                <td>text</td>
-                <td>random</td>
-                <td>layout</td>
-                <td>dashboard</td>
-              </tr>
-              <tr>
-                <td>1,005</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>placeholder</td>
-              </tr>
-              <tr>
-                <td>1,006</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,007</td>
-                <td>placeholder</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>irrelevant</td>
-              </tr>
-              <tr>
-                <td>1,008</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,009</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-              </tr>
-              <tr>
-                <td>1,010</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-              </tr>
-              <tr>
-                <td>1,011</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,012</td>
-                <td>text</td>
-                <td>placeholder</td>
-                <td>layout</td>
-                <td>dashboard</td>
-              </tr>
-              <tr>
-                <td>1,013</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>visual</td>
-              </tr>
-              <tr>
-                <td>1,014</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,015</td>
-                <td>random</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>text</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
       </main>
     </div>
   </div>
@@ -206,15 +76,51 @@
 <script>
 // @ is an alias to /src
 // import EditMobil from '@/components/Admin/EditMobil.vue'
+import axios from "axios";
 import Sidebar from "@/components/Sidebar.vue";
 import NavbarAdm from "@/components/NavbarAdm.vue";
 
 export default {
   name: "EditDataMobil",
+  data() {
+    return {
+      mobil: {
+        id: null,
+        idmobil: "",
+        merek: "",
+        harga: "",
+      },
+    };
+  },
   components: {
     // EditMobil,
     NavbarAdm,
     Sidebar,
+  },
+  methods: {
+    setMobils(data) {
+      this.mobil = data;
+    },
+    updateMobil() {
+      const mobil= {
+        id: this.mobil.id,
+        idmobil: this.mobil.idmobil,
+        merek: this.mobil.merek,
+        harga: this.mobil.harga
+      };
+      axios
+        .put(`http://localhost:8080/api/mobils/${this.$route.params.id}`, mobil)
+        .then((response) => this.$router.push("/datamobil")(response))
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
+  },
+  mounted() {
+    axios
+      .get(`http://localhost:8080/api/mobils/${this.$route.params.id}`)
+      .then((response) => this.setMobils(response.data))
+      .catch((error) => console.log(error));
   },
 };
 </script>

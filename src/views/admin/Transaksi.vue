@@ -1,50 +1,4 @@
 <template>
-  <!-- <div class="container mt-5">
-        <div class="container-fluid ">
-        <div class="row">
-                    <div class="col-sm-12">
-                        <div class="white-box">
-                            <h3 class="box-title">Data Transaksi</h3>
-                            <div class="table-responsive mt-5">
-                                <table class="table text-nowrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">No</th>
-                                            <th class="border-top-0">Id Transaksi</th>
-                                            <th class="border-top-0">Id User</th>
-                                            <th class="border-top-0">Id Mobil</th>
-                                            <th class="border-top-0">Tanggal Sewa</th>
-                                            <th class="border-top-0">Tanggal Kembali</th>
-                                            <th class="border-top-0">Total</th>
-                                            <th class="border-top-0">Status</th>
-                                            <th class="border-top-0">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>T001</td>
-                                            <td>P001</td>
-                                            <td>M001</td>
-                                            <td>4 Januari 2022</td>
-                                            <td>5 Januari 2022</td>
-                                            <td>Rp 400.000,00</td>
-                                            <td>Belum Lunas</td>
-                                            <td> 
-                                                <router-link to="#">
-                                                        <button type="button" class="btn btn-primary">Detail</button>
-                                                    </router-link>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div> -->
-
   <NavbarAdm />
   <div class="container-fluid">
     <div class="row vh-100">
@@ -80,7 +34,7 @@
                 <th class="border-top-0">Tanggal Kembali</th>
                 <th class="border-top-0">Total</th>
                 <th class="border-top-0">Status</th>
-                <th class="border-top-0">Action</th>
+                <!-- <th class="border-top-0">Action</th> -->
               </tr>
             </thead>
             <tbody>
@@ -93,13 +47,13 @@
                 <td>5 Januari 2022</td>
                 <td>Rp 400.000,00</td>
                 <td>Belum Lunas</td>
-                <td>
+                <!-- <td>
                   <router-link to="#">
                     <button type="button" class="btn btn-primary">
                       Detail
                     </button>
                   </router-link>
-                </td>
+                </td> -->
               </tr>
             </tbody>
           </table>

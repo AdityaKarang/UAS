@@ -23,34 +23,40 @@
         >
           <h1 class="h2">Tambah Data Mobil</h1>
         </div>
-        <form class="mt-5">
+        <form @submit.prevent="addMobil" class="mt-5">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Id Mobil</label>
+            <label for="idmobil" class="form-label">Id Mobil</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputEmail1"
+              id="idmobil"
+              name="idmobil"
+              v-model="mobil.idmobil"
               aria-describedby="emailHelp"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Merek</label>
+            <label for="merek" class="form-label">Merek</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputPassword1"
+              id="merek"
+              name="merek"
+              v-model="mobil.merek"
             />
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Harga</label>
+            <label for="harga" class="form-label">Harga</label>
             <input
               type="text"
               class="form-control"
-              id="exampleInputPassword1"
+              id="harga"
+              name="harga"
+              v-model="mobil.harga"
             />
           </div>
       
-            <button @click="saveMobil" type="button" class="btn btn-primary me-2">Save</button>
+            <button type="submit" class="btn btn-primary me-2">Save</button>
           <a href="/datamobil">
             <button type="button" class="btn btn-danger">Cancel</button></a
           >
@@ -199,15 +205,42 @@
 <script>
 // @ is an alias to /src
 // import AddMobil from "@/components/Admin/AddMobil.vue";
+import axios from "axios";
 import Sidebar from "@/components/Sidebar.vue";
 import NavbarAdm from "@/components/NavbarAdm.vue";
 
 export default {
   name: "AddDataMobil",
+  data() {
+    return{
+      mobil: {
+        id: null,
+        idmobil: "",
+        merek: "",
+        harga: "",
+      }
+    };
+  },
   components: {
     NavbarAdm,
     Sidebar,
   },
+  methods: {
+    addMobil() {
+      const mobil= {
+        id: this.mobil.id,
+        idmobil: this.mobil.idmobil,
+        merek: this.mobil.merek,
+        harga: this.mobil.harga
+      };
+      axios
+        .post("http://localhost:8080/api/mobils", mobil)
+        .then((response) => this.$router.push ("/datamobil") (response))
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>
 

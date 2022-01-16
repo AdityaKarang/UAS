@@ -9,9 +9,6 @@
               <router-link class="nav-link" to="/dashboard">Dashboard</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/roles">Role</router-link>
-            </li>
-            <li class="nav-item">
               <router-link class="nav-link" to="/datamobil">Data Mobil</router-link>
             </li>
             <li class="nav-item">

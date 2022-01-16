@@ -22,28 +22,27 @@
         >
           <h1 class="h2">Data Mobil</h1>
         </div>
-        <div  class="table-responsive mt-5">
+        <div class="table-responsive mt-5">
           <router-link to="/adddatamobil" style="float: right">
             <button type="button" class="btn btn-primary">Add</button>
           </router-link>
           <table class="table text-nowrap">
-            <thead>
+            <thead class="text-center">
               <tr>
                 <th class="border-top-0">No</th>
-                <th class="border-top-0">Id Mobil</th> 
+                <th class="border-top-0">Id Mobil</th>
                 <th class="border-top-0">Merek</th>
-                <th class="border-top-0">Harga</th> 
-                <th class="border-top-0">Status</th> 
+                <th class="border-top-0">Harga</th>
                 <th class="border-top-0">Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>M001</td>
-                <td>Mobil</td>
-                <td>Rp 200.000,00</td>
-                <td>Booking</td>
+              <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
                   <div
                     class="btn-group"
@@ -101,7 +100,24 @@
                     </div>
                   </div>
                 </td>
-              </tr>
+              </tr> -->
+
+              <tr class="text-center" v-for="(mobil, index) in mobils" :key="mobil.id">
+              <td>{{ index+1 }}</td>
+              <td>{{ mobil.idmobil }}</td>
+              <td>{{ mobil.merek }}</td>
+              <td>{{ mobil.harga }}</td>
+              <td>
+                <router-link class="btn btn-primary me-2"
+                :to="'/editdatamobil/' + mobil.id">
+                  EDIT
+                </router-link>
+                <router-link class="btn btn-danger me-2"
+                :to="'/deletemobil/' + mobil.id">
+                  Delete
+                </router-link>
+              </td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -112,148 +128,37 @@
           height="263"
           style="display: block; width: 625px; height: 263px"
         ></canvas>
-
-        <!-- <h2>Section title</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-                <th scope="col">Header</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1,001</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,002</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-              </tr>
-              <tr>
-                <td>1,003</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,004</td>
-                <td>text</td>
-                <td>random</td>
-                <td>layout</td>
-                <td>dashboard</td>
-              </tr>
-              <tr>
-                <td>1,005</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>placeholder</td>
-              </tr>
-              <tr>
-                <td>1,006</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,007</td>
-                <td>placeholder</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>irrelevant</td>
-              </tr>
-              <tr>
-                <td>1,008</td>
-                <td>random</td>
-                <td>data</td>
-                <td>placeholder</td>
-                <td>text</td>
-              </tr>
-              <tr>
-                <td>1,009</td>
-                <td>placeholder</td>
-                <td>irrelevant</td>
-                <td>visual</td>
-                <td>layout</td>
-              </tr>
-              <tr>
-                <td>1,010</td>
-                <td>data</td>
-                <td>rich</td>
-                <td>dashboard</td>
-                <td>tabular</td>
-              </tr>
-              <tr>
-                <td>1,011</td>
-                <td>information</td>
-                <td>placeholder</td>
-                <td>illustrative</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,012</td>
-                <td>text</td>
-                <td>placeholder</td>
-                <td>layout</td>
-                <td>dashboard</td>
-              </tr>
-              <tr>
-                <td>1,013</td>
-                <td>dashboard</td>
-                <td>irrelevant</td>
-                <td>text</td>
-                <td>visual</td>
-              </tr>
-              <tr>
-                <td>1,014</td>
-                <td>dashboard</td>
-                <td>illustrative</td>
-                <td>rich</td>
-                <td>data</td>
-              </tr>
-              <tr>
-                <td>1,015</td>
-                <td>random</td>
-                <td>tabular</td>
-                <td>information</td>
-                <td>text</td>
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
       </main>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import NavbarAdm from "@/components/NavbarAdm.vue";
 import Sidebar from "@/components/Sidebar.vue";
 export default {
   name: "Datamobil",
+  data() {
+    return {
+      mobils: [],
+      // currentMobil : null,
+    };
+  },
   components: {
     NavbarAdm,
     Sidebar,
+  },
+  methods: {
+    setMobils(data) {
+      this.mobils = data;
+    },
+  },
+   mounted() {
+    axios
+      .get("http://localhost:8080/api/mobils")
+      .then((response) => this.setMobils(response.data))
+      .catch((error) => console.log(error));
   },
 };
 </script>
